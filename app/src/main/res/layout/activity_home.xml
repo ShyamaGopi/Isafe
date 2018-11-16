@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:theme="@style/AppTheme1"
+
+    tools:context=".Home">
+
+    <Button
+        android:id="@+id/btn_profile"
+
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:textColor="@color/colorAccent"
+        android:text="Edit Profile" />
+    <Button
+        android:id="@+id/btn_viewcontact"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+        android:text="Add Contacts"/>
+
+    <Button
+        android:id="@+id/btn_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"
+
+        android:text="Send Message" />
+
+    <Button
+        android:id="@+id/btn_mycontacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="My Emergency Contacts"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/btn_complaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Complaint"
+        android:textColor="@color/colorAccent" />
+    <Button
+        android:id="@+id/btn_changepwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Change Password"
+        android:textColor="@color/colorAccent" />
+</LinearLayout>

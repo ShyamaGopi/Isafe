@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".ChangePass">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        android:text="Change Password"
+        android:layout_gravity="center"/>
+<EditText
+    android:id="@+id/edt_oldpwd"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Enter Old Password"
+    android:gravity="center"
+    android:layout_gravity="center"/>
+    <EditText
+        android:id="@+id/edt_newpwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter New Password"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+    <EditText
+        android:id="@+id/edt_confirmpwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Confirm Password"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/btn_changepwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:textColor="@color/colorAccent"
+        android:textSize="15dp"
+        android:layout_gravity="center"/>
+</LinearLayout>
