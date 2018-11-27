@@ -36,31 +36,32 @@ import java.util.Locale;
 public class Home extends AppCompatActivity implements View.OnClickListener,LocationListener
 
 {
-Button btnProfile,btncontact,btnMsg,mycontacts,complaints,password;
+Button btnProfile,btncontact,btnMsg,mycontacts,complaints,password,helpline,logout;
     LocationManager locationManager;
     String lattitude;
     String longitude;
     String loc;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
-
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        helpline=(Button)findViewById(R.id.btn_helpline);
         btnProfile=(Button)findViewById(R.id.btn_profile);
+        logout=(Button)findViewById(R.id.btn_logout);
         btncontact=(Button)findViewById(R.id.btn_viewcontact);
         btnMsg=(Button)findViewById(R.id.btn_msg);
         mycontacts=(Button) findViewById(R.id.btn_mycontacts);
-        complaints=(Button)findViewById(R.id.btn_complaint);
+        //complaints=(Button)findViewById(R.id.btn_complaint);
         password=(Button)findViewById(R.id.btn_changepwd);
         password.setOnClickListener(this);
         mycontacts.setOnClickListener(this);
+        logout.setOnClickListener(this);
+        helpline.setOnClickListener(this);
         btnProfile.setOnClickListener(this);
         btncontact.setOnClickListener(this);
         btnMsg.setOnClickListener(this);
-        complaints.setOnClickListener(this);
+        //complaints.setOnClickListener(this);
 
     }
 
@@ -83,15 +84,29 @@ Button btnProfile,btncontact,btnMsg,mycontacts,complaints,password;
         }
         else if(view==btnMsg) {
             getLocation();
+            SharedPreferences sp = getSharedPreferences("my_data", MODE_PRIVATE);
+            String id = sp.getString("userid", "");
+//            contacts c = new contacts();
+//            c.execute(id);
+
         }
-        else if (view==complaints){
+        /*else if (view==complaints){
             Intent k = new Intent(this, Complaint.class);
             startActivity(k);
-        }
+        }*/
         else if (view==password){
             Intent l = new Intent(this, ChangePass.class);
             startActivity(l);
         }
+        else if(view==helpline){
+            Intent m = new Intent(this, Helpline.class);
+            startActivity(m);
+        }
+        else if (view==logout){
+            Intent n=new Intent(this,Login.class);
+            startActivity(n);
+        }
+
     }
     public void getLocation() {
 
@@ -124,10 +139,14 @@ Button btnProfile,btncontact,btnMsg,mycontacts,complaints,password;
             Log.d("alliswell", "hello");
            SharedPreferences sp = getSharedPreferences("my_data", MODE_PRIVATE);
            String id = sp.getString("userid", "");
-           contacts c = new contacts();
-            c.execute(id);
 
             String myloc= addresses.get(0).getAddressLine(0)+"";
+
+
+            contacts c = new contacts();
+            c.execute(id);
+
+          //  String myloc= addresses.get(0).getAddressLine(0)+"";
 
         } catch (IOException e) {
             e.printStackTrace();

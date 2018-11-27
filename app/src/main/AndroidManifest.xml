@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <uses-feature android:name="android.hardware.location.gps" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/isafeicon"
@@ -51,6 +53,8 @@
 
         <activity android:name=".Complaint" />
         <activity android:name=".ChangePass" />
+        <activity android:name=".Helpline" />
+        <activity android:name=".Emergency"></activity>
     </application>
 
 </manifest>

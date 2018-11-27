@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class Login extends AppCompatActivity implements View.OnClickListener
 {
 EditText edt_uname,edt_pwd;
-Button login;
+Button login,reg;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -28,19 +28,28 @@ Button login;
         edt_uname=(EditText)findViewById(R.id.Username);
         edt_pwd=(EditText) findViewById(R.id.Password);
         login=(Button) findViewById(R.id.btn_login);
+        reg=(Button)findViewById(R.id.btn_reg);
+        reg.setOnClickListener(this);
         login.setOnClickListener(this);
 
 
     }
 
     @Override
-    public void onClick(View view)
-    {
-        String username=edt_uname.getText().toString();
-        String password=edt_pwd.getText().toString();
+    public void onClick(View view) {
+        if (view == login) {
 
-        LoginCheck l= new LoginCheck();
-        l.execute(username,password);
+
+            String username = edt_uname.getText().toString();
+            String password = edt_pwd.getText().toString();
+
+            LoginCheck l = new LoginCheck();
+            l.execute(username, password);
+        }
+      else if (view==reg){
+            Intent i=new Intent(this,Registration.class);
+            startActivity(i);
+        }
     }
 
     private class LoginCheck extends AsyncTask<String,String,String>
@@ -74,7 +83,10 @@ Button login;
                     JSONObject jo = ja.getJSONObject(0);
                     String id = jo.getString("userid");
                     String uname = jo.getString("username");
-                    Toast.makeText(Login.this, "welcome " + uname, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Welcome " + uname, Toast.LENGTH_SHORT).show();
+
+
+
                     SharedPreferences sp = getSharedPreferences("my_data", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString("userid", id);

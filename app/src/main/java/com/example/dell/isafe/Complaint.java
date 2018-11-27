@@ -19,10 +19,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Complaint extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-Spinner category;
+//Spinner category;
 String id[]=null;
 String name[]=null;
 SharedPreferences sp;
+String licenseno="";
 String uid;
 String catid="";
 EditText complaint;
@@ -32,20 +33,25 @@ ArrayAdapter<String> adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaint);
-        category=(Spinner)findViewById(R.id.sp_category);
+
+
+         licenseno=getIntent().getStringExtra("licenseno");
+        //Toast.makeText(this, "License : "+licenseno, Toast.LENGTH_SHORT).show();
+
+  //      category=(Spinner)findViewById(R.id.sp_category);
         complaint=(EditText)findViewById(R.id.edt_complaint);
         sp=getSharedPreferences("my_data",MODE_PRIVATE);
         uid=sp.getString("userid","");
         send=(Button)findViewById(R.id.btn_sendcomplaint);
         send.setOnClickListener(this);
-     helpline c=new helpline();
-     c.execute();
-     category.setOnItemSelectedListener(this);
+    // helpline c=new helpline();
+     //c.execute();
+     //category.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        catid=id[category.getSelectedItemPosition()];
+       // catid=id[category.getSelectedItemPosition()];
        // Toast.makeText(this, "Clicked : "+catid, Toast.LENGTH_SHORT).show();
     }
 
@@ -58,10 +64,10 @@ ArrayAdapter<String> adapter;
     public void onClick(View view) {
       String des=complaint.getText().toString();
       sendComplaint sc=new sendComplaint();
-      sc.execute(uid,catid,des);
+      sc.execute(uid,licenseno,des);
     }
 
-    private class helpline extends AsyncTask<String,String,String>{
+    /*private class helpline extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... strings) {
             WebServiceCaller w=new WebServiceCaller();
@@ -90,14 +96,14 @@ ArrayAdapter<String> adapter;
                     }
                     adapter=new ArrayAdapter<String>(Complaint.this,android.R.layout.simple_spinner_item,name);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-                    category.setAdapter(adapter);
+     //               category.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }
-    }
+    }*/
 
     private class sendComplaint extends AsyncTask<String,String,String>{
         @Override
@@ -105,7 +111,7 @@ ArrayAdapter<String> adapter;
             WebServiceCaller ws = new WebServiceCaller();
             ws.setSoapObject("sendcomplaint");
             ws.addProperty("uid",strings[0]);
-            ws.addProperty("comtypeid",strings[1]);
+            ws.addProperty("licenseno",strings[1]);
             ws.addProperty("comdes",strings[2]);
             ws.callWebService();
             return ws.getResponse();
