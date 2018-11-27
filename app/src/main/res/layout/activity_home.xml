@@ -45,17 +45,24 @@
         android:textColor="@color/colorAccent" />
 
     <Button
-        android:id="@+id/btn_complaint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Complaint"
-        android:textColor="@color/colorAccent" />
-    <Button
         android:id="@+id/btn_changepwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Change Password"
         android:textColor="@color/colorAccent" />
+    <Button
+        android:id="@+id/btn_helpline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Helpline"
+        android:layout_gravity="center"
+        android:textColor="@color/colorAccent"/>
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:layout_gravity="center"
+        android:text="Logout"/>
 </LinearLayout>

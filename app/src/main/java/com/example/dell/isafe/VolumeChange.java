@@ -18,7 +18,7 @@ public class VolumeChange extends BroadcastReceiver {
             int oldVolume = intent.getIntExtra("android.media.EXTRA_PREV_VOLUME_STREAM_VALUE", 0);
             if (newVolume != oldVolume) {
                 Intent i = new Intent();
-                i.setClass(context,Home.class);
+                i.setClass(context,Emergency.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
             }
